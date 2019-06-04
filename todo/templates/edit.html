@@ -1,81 +1,29 @@
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Add</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" type="text/css" href="./css/adminx.css" media="screen" />
-  </head>
-  <body>
-    <div class="adminx-container">
-      <!-- Header -->
-      <nav class="navbar navbar-expand justify-content-between fixed-top">
-        <a class="navbar-brand mb-0 h1 d-none d-md-block" href="./sector-one.html">Sector-One</a>
-      </nav> 
-
-
-    <div class="adminx-content">
-        <div class="adminx-main-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                            <span  class="name-input">section</span><input id="section" class="inputs-main" id="section" type="text" placeholder="Type your ...">
-                        </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                            <span  class="name-input">pro</span><input id="name" class="inputs-main" type="text" id="product" placeholder="Type your ...">
-                        </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1"></div>
-                        <div class="col-md-10">
-                            <span  class="name-input">stock</span><input id="stock" class="inputs-main"  type="text" placeholder="Type your ...">
-                        </div>
-                    <div class="col-md-1"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-4">
-                        <button id="save" type="button" class="btn btn-success btn-inputs">Save</button>
-                    </div>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1>Edit Title</h1>
+    </div>
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{message}}
+            <div class="form-group">
+                <button class="form-control btn btn-primary">Edit TO DO</button>
             </div>
-        </div>
+        </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-    <script src="./js/vendor.js"></script>
-    <script src="./js/adminx.js"></script>
-
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
-    <script src="../front/add.js"></script>
-
-    
-  
-    <script>
-      $(document).ready(function() {
-        var table = $('[data-table]').DataTable({
-          "columns": [
-            null,
-            null,
-            null,
-            null,
-            null,
-            { "orderable": false }
-          ]
-        });
-      });
-    </script>
-
-  </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js" integrity="sha384-7aThvCh9TypR7fIc2HV4O/nFMVCBwyIUKL8XCtKE+8xgCgl/PQGuFsvShjr74PBp" crossorigin="anonymous"></script>
+</body>
 </html>

@@ -9,6 +9,7 @@ from .forms import TodoForm
 from django.core.exceptions import ValidationError
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_list_or_404, get_object_or_404
 
 
 @login_required
@@ -29,18 +30,35 @@ def create_todo(request):
     context["form"] = form
     return render(request, 'add.html', context)
 
+#@login_required
+#def update_todo(request, pk):
+#    context = {}
+#    context['todoss'] = Todo.objects.filter(users = request.user.pk)
+#    todos = Todo.objects.get(pk=pk)
+#    form = TodoForm(request.POST or None, instance=todos)
+#
+#    if form.is_valid():
+#        form.save()
+#        return redirect('list_todos')
+#
+#    return render(request, 'edit.html', context)
+
 @login_required
 def update_todo(request, pk):
+    instance = get_object_or_404(Todo, pk=pk)
     context = {}
-    context['todoss'] = Todo.objects.filter(users = request.user.pk)
-    todos = Todo.objects.get(pk=pk)
-    form = TodoForm(request.POST or None, instance=todos)
+    context['todos'] = Todo.objects.get(users = request.user.pk)
+    form = TodoForm(request.POST or None, instance=instance)
+    context['form'] = form
 
     if form.is_valid():
-        form.save()
-        return redirect('list_todos')
-
+        instance = form.save(commit=False)
+        instance.save()
+        return redirect('/')
+    
     return render(request, 'edit.html', context)
+
+
 
     
 @login_required
