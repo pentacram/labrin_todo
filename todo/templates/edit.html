@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="./css/adminx.css" media="screen" />
+  </head>
+  <body>
+    <div class="adminx-container">
+      <!-- Header -->
+      <nav class="navbar navbar-expand justify-content-between fixed-top">
+        <a class="navbar-brand mb-0 h1 d-none d-md-block" href="./sector-one.html">Sector-One</a>
+      </nav> 
+
+
+    <div class="adminx-content">
+        <div class="adminx-main-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <span  class="name-input">section</span><input id="section" class="inputs-main" id="section" type="text" placeholder="Type your ...">
+                        </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <span  class="name-input">pro</span><input id="name" class="inputs-main" type="text" id="product" placeholder="Type your ...">
+                        </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <span  class="name-input">stock</span><input id="stock" class="inputs-main"  type="text" placeholder="Type your ...">
+                        </div>
+                    <div class="col-md-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-4">
+                        <button id="save" type="button" class="btn btn-success btn-inputs">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="./js/vendor.js"></script>
+    <script src="./js/adminx.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <script src="../front/add.js"></script>
+
+    
+  
+    <script>
+      $(document).ready(function() {
+        var table = $('[data-table]').DataTable({
+          "columns": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            { "orderable": false }
+          ]
+        });
+      });
+    </script>
+
+  </body>
+</html>

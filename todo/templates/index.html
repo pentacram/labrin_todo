@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'labrin/css/anaseyfe.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <div id="left-board">
+        <img style="border-radius: 50%; margin-left: 3.5em;" class="img" src="./static/admin/img/download (1).png">
+        <input style="display: none;" id="inp1" placeholder="UserName" type="text">
+        <input style="display: none;" id="inp2" placeholder="Name" type="text">
+        <input style="display: none;" id="inp3" placeholder="E-mail" type="text">
+        <button id="btn" class="btn btn-warning">Edit</button>
+        <a href="{% url 'logout' %}"><button id="btn-two" class="btn btn-danger">Logout</button></a>
+        
+    </div>
+    <div id="table" class="table-responsive text-nowrap table-bordered">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Todo</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col">Dead Line</th>
+                    <th scope="col">Dead Time</th>
+                    <th scope="col"> Status </th>
+                   <th scope="col">Heading</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for to in todo %}
+                <tr>
+                    <th scope="row">{{ to.id }}</th>
+                    <td>{{ to.task }}</td>
+                    <td>{{ to.starttime }}</td>
+                    <td>{{ to.deaddate }}</td>
+                    <td>{{ to.deadtime }}</td>
+                    <td>{{ to.status }}</td>
+                    <td>
+                        <a style="color:white;" href="{% url 'update_todo' to.pk %}" class="btn btn-sm btn-primary">Edit</a>
+                        <a style="color:white;" href="{% url 'remove' to.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                        <a style="float: right;" href="{% url 'status' to.pk %}"  background-color:darksalmon; font-size: 1.7em; cursor: pointer;">&#10004;</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{% url 'create_todo' %}" class="add">Add</a>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $('#btn').click(function () {
+            $(this).siblings('input').slideToggle(" slow ")
+        })
+    </script>
+
+</body>
+
+</html>
