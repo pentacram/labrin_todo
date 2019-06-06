@@ -3,7 +3,7 @@ from .models import *
 
 @admin.register(Todo)
 class TodoAdmin(admin.ModelAdmin):
-    list_display = ('task', 'starttime', 'deaddate', 'deadtime', 'status')
+    list_display = ('task', 'starttime', 'deadline', 'status')
 
 
 

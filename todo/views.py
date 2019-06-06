@@ -47,8 +47,9 @@ def create_todo(request):
 def update_todo(request, pk):
     instance = get_object_or_404(Todo, pk=pk)
     context = {}
-    context['todos'] = Todo.objects.get(users = request.user.pk)
+    context['todos'] = Todo.objects.filter(users__pk = request.user.pk)
     form = TodoForm(request.POST or None, instance=instance)
+    tod = Todo.objects.get(pk=pk)
     context['form'] = form
 
     if form.is_valid():
