@@ -1,8 +1,11 @@
 from __future__ import absolute_import, unicode_literals
+from django.core.mail import EmailMultiAlternatives
 from celery import shared_task
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.utils import timezone
 from .models import Todo
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
 
 @shared_task
 def mul(x, y):
@@ -11,10 +14,17 @@ def mul(x, y):
 
 
 
-@shared_task
+    
+@shared_task()
 def send_email():
-    tooday = datetime.date.today()
-    data = Todo.objects.filter(deaddate=tooday)
-    timea = data.objects.filter()
+    user = User.objects.all()
+    message = EmailMessage('Subject', 'Message', to=[user.email])
+    message.send()
+    print('Email is sent')
+
+        
+
+
+
 
 

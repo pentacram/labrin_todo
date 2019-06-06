@@ -10,6 +10,13 @@ from django.core.exceptions import ValidationError
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_list_or_404, get_object_or_404
+from .task import send_email
+
+
+def todo_email():
+    for to in Todo.objects.all():
+        if to.deadline > datetime.timedelta(minutes=10):
+            send_email()
 
 
 @login_required

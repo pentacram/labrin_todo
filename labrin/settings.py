@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_celery_results',
+    "djcelery_email",
     'todo',
     'user',
 ]
 
-
+EMAIL_BACKEND = 'django_ses.SESBackend'
+DEFAULT_FROM_EMAIL = 'ME <tofiq.cabbarov93@gmail.com>'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
