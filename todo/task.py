@@ -16,10 +16,18 @@ def mul(x, y):
 
     
 @shared_task()
-def send_email():
-    user = User.objects.all()
-    message = EmailMessage('Subject', 'Message', to=[user.email])
-    message.send()
+def send_email(username, mail_adress):
+    username = User.objects.all()
+    send_mail(
+        subject = "taskin bitmesine 10 deqiqe qalib" + username,
+        html_message='taskin vaxti bitir',
+        message="taskin bitmesine 10 deqiqe qalib",
+        from_email = 'pentacram55@gmail.com',
+        recipient_list = [mail_adress]
+    )
+    return f"Hello {username}"
+    #message = EmailMessage('Subject', 'Message', to=[user.email])
+    #message.send()
     print('Email is sent')
 
         

@@ -11,12 +11,22 @@ from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_list_or_404, get_object_or_404
 from .task import send_email
-
+from datetime import date
 
 def todo_email():
-    for to in Todo.objects.all():
-        if to.deadline > datetime.timedelta(minutes=10):
-            send_email()
+    day = Todo.objects.filter(deadline =  date.today())
+    if day > datetime.timedelta(minutes=10):
+        user = users__pk
+        if user == users.pk:
+            send_email.delay(username=User.username, mail_adress=User.email)
+
+
+#def todo_email():
+#    for to in Todo.objects.all():
+#        if to.deadline > datetime.timedelta(minutes=10):
+#            user = users__pk
+#            if user == to.user.pk:
+#                send_email.delay(username=User.username, mail_adress=User.email)
 
 
 @login_required

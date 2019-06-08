@@ -36,7 +36,6 @@
                     <th scope="col">Todo</th>
                     <th scope="col">Start Time</th>
                     <th scope="col">Dead Line</th>
-                    <th scope="col">Dead Time</th>
                     <th scope="col"> Status </th>
                    <th scope="col">Heading</th>
                 </tr>
@@ -47,8 +46,7 @@
                     <th scope="row">{{ to.id }}</th>
                     <td>{{ to.task }}</td>
                     <td>{{ to.starttime }}</td>
-                    <td>{{ to.deaddate }}</td>
-                    <td>{{ to.deadtime }}</td>
+                    <td>{{ to.deadline }}</td>
                     <td>{{ to.status }}</td>
                     <td>
                         <a style="color:white;" href="{% url 'update_todo' to.pk %}" class="btn btn-sm btn-primary">Edit</a>
