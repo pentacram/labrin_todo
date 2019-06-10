@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import Todo
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
+from labrin import settings
 
 @shared_task
 def mul(x, y):
@@ -16,18 +17,13 @@ def mul(x, y):
 
     
 @shared_task()
-def send_email(username, mail_adress):
-    username = User.objects.all()
+def send_email(subject,message,recipient):
     send_mail(
-        subject = "taskin bitmesine 10 deqiqe qalib" + username,
-        html_message='taskin vaxti bitir',
-        message="taskin bitmesine 10 deqiqe qalib",
-        from_email = 'pentacram55@gmail.com',
-        recipient_list = [mail_adress]
+        subject = subject,
+        message= message,
+        from_email = settings.EMAIL_HOST_USER,
+        recipient_list = [recipient]
     )
-    return f"Hello {username}"
-    #message = EmailMessage('Subject', 'Message', to=[user.email])
-    #message.send()
     print('Email is sent')
 
         

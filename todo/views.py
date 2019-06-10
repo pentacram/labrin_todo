@@ -10,15 +10,41 @@ from django.core.exceptions import ValidationError
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_list_or_404, get_object_or_404
-from .task import send_email
-from datetime import date
+from .tasks import send_email
+from datetime import datetime, timedelta, timezone
 
-def todo_email():
-    day = Todo.objects.filter(deadline =  date.today())
-    if day > datetime.timedelta(minutes=10):
-        user = users__pk
-        if user == users.pk:
-            send_email.delay(username=User.username, mail_adress=User.email)
+
+def sendmail():
+    user = User.objects.get(id=2)
+    usermail = user.email
+    print(usermail)
+    subject = 'task deadline subject'
+    message = 'taskin bitmeyine netersen'
+    send_email.delay(subject,message,usermail)
+    print('Mail gonderildi')
+
+def send_deadline_warning():
+    now = datetime.now(timezone.utc)
+
+    todos = Todo.objects.all()
+    users = User.objects.all()
+    #print(dir(todos))
+    for i in todos:
+        if i.deadline - now  > timedelta(seconds = -600):
+            print(dir(i))
+            user = i.users
+            email = user.email
+            subject = 'task deadline subject'
+            message = 'taskin bitmeyine netersen'
+            send_email.delay(subject,message,email)
+            print('Maul send')
+
+#def todo_email():
+#    day = Todo.objects.filter(deadline =  date.today())
+#    if day > datetime.timedelta(minutes=10):
+#        user = users__pk
+#        if user == users.pk:
+#            send_email.delay(username=User.username, mail_adress=User.email)
 
 
 #def todo_email():
@@ -143,19 +169,3 @@ def todo_status(request, pk):
 #        kwargs = super(LoginRequiredMixin, self).get_form_kwargs()
 #        kwargs['user'] = self.request.user
 #        return kwargs
-#
-#def emailView(request):
-#    if request.method == 'GET':
-#        form = ContactForm()
-#    else:
-#        form = ContactForm(request.POST or None)
-#        if form.is_valid():
-#            subject = form.cleaned_data['subject']
-#            from_email = form.cleaned_data['from_email']
-#            message = form.cleaned_data['message']
-#            try:
-#                send_mail(subject, message, from_email, ['gulnarnecefova1996@gmail.com'])
-#            except BadHeaderError:
-#                return HttpResponse('Invalid header found.')
-#            return redirect('success')
-#    return render(request, "email.html", {'form': form})

@@ -25,7 +25,7 @@ SECRET_KEY = '(8el0=itu4s=zl8)gf64xtkehn%lsd@x#2fw_rqh_fxxls)64e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'user',
 ]
 
-EMAIL_BACKEND = 'django_ses.SESBackend'
-DEFAULT_FROM_EMAIL = 'ME <tofiq.cabbarov93@gmail.com>'
+#EMAIL_BACKEND = 'django_ses.SESBackend'
+#DEFAULT_FROM_EMAIL = 'ME <tofiq.cabbarov93@gmail.com>'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,14 +81,24 @@ WSGI_APPLICATION = 'labrin.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'labrin_db',
+#        'USER': 'labrin',
+#        'PASSWORD': '74123698520',
+#        'HOST': 'localhost',
+#        'PORT': '5433',
+#    }
+#}
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'labrin_db',
-        'USER': 'labrin',
-        'PASSWORD': '74123698520',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'USER': 'penta',
+        'PASSWORD': '74123698520a',
+        'HOST': '127.0.0.1',   
+        'PORT': '3306',
     }
 }
 
@@ -117,7 +127,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Baku'
 
 USE_I18N = True
 
@@ -153,3 +163,10 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pentacram@inbox.ru'
+EMAIL_HOST_PASSWORD = 'pentadz'
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
