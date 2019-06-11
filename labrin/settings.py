@@ -83,21 +83,21 @@ WSGI_APPLICATION = 'labrin.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'you db_name',
-        'USER': 'you username',
-        'PASSWORD': '',
+        'NAME': 'db name',
+        'USER': 'user name',
+        'PASSWORD': 'user password',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5433',
     }
 }
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'you db_name',
-#        'USER': 'you Username',
+#        'NAME': '',
+#        'USER': '',
 #        'PASSWORD': '',
-#        'HOST': '',   
-#        'PORT': '',
+#        'HOST': '127.0.0.1',   
+#        'PORT': '3306',
 #    }
 #}
 
