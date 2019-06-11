@@ -78,29 +78,28 @@ TEMPLATES = [
 WSGI_APPLICATION = 'labrin.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'labrin_db',
-#        'USER': 'labrin',
-#        'PASSWORD': '74123698520',
-#        'HOST': 'localhost',
-#        'PORT': '5433',
-#    }
-#}
+ Database
+ https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'labrin_db',
-        'USER': 'penta',
-        'PASSWORD': '74123698520a',
-        'HOST': '127.0.0.1',   
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'you db_name',
+        'USER': 'you username',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'you db_name',
+#        'USER': 'you Username',
+#        'PASSWORD': '',
+#        'HOST': '',   
+#        'PORT': '',
+#    }
+#}
 
 
 # Password validation
