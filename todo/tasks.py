@@ -18,6 +18,7 @@ def mul(x, y):
     
 @shared_task()
 def send_email(subject,message,recipient):
+    
     send_mail(
         subject = subject,
         message= message,

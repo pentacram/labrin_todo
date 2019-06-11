@@ -20,12 +20,12 @@
 <body>
     
     <div id="left-board">
-        <img style="border-radius: 50%; margin-left: 3.5em;" class="img" src="./static/admin/img/download (1).png">
-        <input style="display: none;" id="inp1" placeholder="UserName" type="text">
-        <input style="display: none;" id="inp2" placeholder="Name" type="text">
-        <input style="display: none;" id="inp3" placeholder="E-mail" type="text">
-        <button id="btn" class="btn btn-warning">Edit</button>
-        <a href="{% url 'logout' %}"><button id="btn-two" class="btn btn-danger">Logout</button></a>
+        {% comment %} <img style="border-radius: 50%; margin-left: 3.5em;" class="img" src="./static/admin/img/download (1).png"> {% endcomment %}
+        {% comment %} <input style="display: none;" id="inp1" placeholder="UserName" type="text"> {% endcomment %}
+        {% comment %} <input style="display: none;" id="inp2" placeholder="Name" type="text"> {% endcomment %}
+        {% comment %} <input style="display: none;" id="inp3" placeholder="E-mail" type="text"> {% endcomment %}
+         <a href="{% url 'create_todo' %}" id="btn" class="btn btn-warning">Create</a> 
+         <a href="{% url 'logout' %}"><button id="btn-two" class="btn btn-danger">Logout</button></a>
         
     </div>
     <div id="table" class="table-responsive text-nowrap table-bordered">
@@ -51,14 +51,13 @@
                     <td>
                         <a style="color:white;" href="{% url 'update_todo' to.pk %}" class="btn btn-sm btn-primary">Edit</a>
                         <a style="color:white;" href="{% url 'remove' to.pk %}" class="btn btn-sm btn-danger">Delete</a>
-                        <a style="float: right;" href="{% url 'status' to.pk %}"  background-color:darksalmon; font-size: 1.7em; cursor: pointer;">&#10004;</a>
+                        <a style="float: right;" href="{% url 'status' to.pk %}"  background-color:darksalmon; font-size: 1.7em; cursor: pointer;>&#10004;</a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
-    <a href="{% url 'create_todo' %}" class="add">Add</a>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script>
