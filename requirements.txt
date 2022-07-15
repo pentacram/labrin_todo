@@ -4,7 +4,7 @@ celery==4.3.0
 Django==2.2.1
 django-appconf==1.0.3
 django-celery-email==2.0.2
-django-celery-results==1.1.1
+django-celery-results==2.4.0
 django-crispy-forms==1.7.2
 kombu==4.6.0
 mysql==0.0.2
